@@ -152,12 +152,12 @@ Display Result
 ## 📷 Screenshots
 
 ### Home Page
+<img width="1919" height="958" alt="image" src="https://github.com/user-attachments/assets/e4e17110-bfbe-4925-a057-e33224a4702a" />
 
-(Add screenshot here)
 
 ### Result Page
 
-(Add screenshot here)
+<img width="1919" height="942" alt="image" src="https://github.com/user-attachments/assets/c806ec9a-d5ad-4d17-a23c-646d88761c62" />
 
 ---
 
