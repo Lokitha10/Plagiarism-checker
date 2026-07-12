@@ -1,34 +1,47 @@
 import os
+from flask import Flask, render_template, request
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-student_files = [doc for doc in os.listdir() if doc.endswith('.txt')]
-student_notes = [open(_file, encoding='utf-8').read()
-                 for _file in student_files]
+app = Flask(__name__)
+
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
-def vectorize(Text): return TfidfVectorizer().fit_transform(Text).toarray()
-def similarity(doc1, doc2): return cosine_similarity([doc1, doc2])
+def calculate_similarity(text1, text2):
+    vectorizer = TfidfVectorizer()
+
+    vectors = vectorizer.fit_transform([text1, text2])
+
+    similarity = cosine_similarity(vectors)[0][1]
+
+    return round(similarity * 100, 2)
 
 
-vectors = vectorize(student_notes)
-s_vectors = list(zip(student_files, vectors))
-plagiarism_results = set()
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 
-def check_plagiarism():
-    global s_vectors
-    for student_a, text_vector_a in s_vectors:
-        new_vectors = s_vectors.copy()
-        current_index = new_vectors.index((student_a, text_vector_a))
-        del new_vectors[current_index]
-        for student_b, text_vector_b in new_vectors:
-            sim_score = similarity(text_vector_a, text_vector_b)[0][1]
-            student_pair = sorted((student_a, student_b))
-            score = (student_pair[0], student_pair[1], sim_score)
-            plagiarism_results.add(score)
-    return plagiarism_results
+@app.route("/compare", methods=["POST"])
+def compare():
+
+    file1 = request.files["file1"]
+    file2 = request.files["file2"]
+
+    text1 = file1.read().decode("utf-8")
+    text2 = file2.read().decode("utf-8")
+
+    similarity = calculate_similarity(text1, text2)
+
+    return render_template(
+        "index.html",
+        similarity=similarity
+    )
 
 
-for data in check_plagiarism():
-    print(data)
+if __name__ == "__main__":
+    app.run(debug=True)

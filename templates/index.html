@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Plagiarism Checker</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Plagiarism Detection System</h1>
+
+<form action="/compare" method="POST" enctype="multipart/form-data">
+
+<label>Upload First File</label>
+
+<input type="file" name="file1" required>
+
+<label>Upload Second File</label>
+
+<input type="file" name="file2" required>
+
+<button type="submit">
+
+Compare
+
+</button>
+
+</form>
+
+{% if similarity %}
+
+<h2>
+
+Similarity Score
+
+</h2>
+
+<h3>
+
+{{ similarity }} %
+
+</h3>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
