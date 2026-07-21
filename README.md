@@ -1,33 +1,175 @@
+# 📄 Plagiarism Detection System
 
-# Plagiarism-checker-Python
+A web-based **Plagiarism Detection System** built using **Python**, **Flask**, and **Scikit-learn**. The application allows users to upload two text files, compares their content using **TF-IDF Vectorization** and **Cosine Similarity**, and displays the similarity percentage.
 
-It detects plagiarism in a textual document using **cosine similarity**.
+---
 
-## How is it Done?
+## 🚀 Features
 
-You might be wondering how plagiarism detection on textual data is done, well it ain't as complicated as you may think.
+- 📂 Upload two text files (.txt)
+- 📊 Calculate similarity percentage
+- ⚡ Uses TF-IDF Vectorization
+- 📐 Uses Cosine Similarity algorithm
+- 🌐 User-friendly Flask web interface
+- 🎯 Displays plagiarism percentage instantly
 
-We all know that computers are good with numbers; so in order to compute the similarity between two text documents, the textual raw data is transformed into vectors => arrays of numbers and from that, we make use of basic knowledge of vectors to compute the similarity between them.
+---
 
-This repo contains a basic example on how to do that.
+## 🛠️ Technologies Used
 
-## Dependencies
+- Python
+- Flask
+- Scikit-learn
+- HTML5
+- CSS3
 
-Before you begin playing with the source code, you might need to install dependencies just as shown below;
+---
 
-```bash
-pip3 install -r requirements.txt
-```
-
-## Running the App
-
-To run this code you need to have your textual documents in your project directory with the **.txt** extension. When you run the script, it will automatically load all the documents with that extension and then compute the similarities between them as shown below;
-
-```bash
-$-> cd Plagiarism-checker-Python
-$ Plagiarism-checker-Python-> python3 app.py
-('john.txt', 'juma.txt', 0.5465972177348937)
-('fatma.txt', 'john.txt', 0.14806887549598566)
-('fatma.txt', 'juma.txt', 0.18643448370323362)
+## 📂 Project Structure
 
 ```
+PlagiarismChecker/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── uploads/
+│
+├── templates/
+│   └── index.html
+│
+├── static/
+│   └── style.css
+│
+└── venv/
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Lokitha10/Plagiarism-checker-Python-master.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd Plagiarism-checker-Python-master
+```
+
+### 3. Create Virtual Environment
+
+Windows
+
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment
+
+```bash
+venv\Scripts\activate
+```
+
+### 4. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Application
+
+```bash
+python app.py
+```
+
+Open your browser and visit
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+## 📝 How It Works
+
+1. Upload two text files.
+2. The application reads both files.
+3. Text is converted into numerical vectors using **TF-IDF**.
+4. Cosine Similarity is calculated between the vectors.
+5. The similarity percentage is displayed on the webpage.
+
+---
+
+## 🔄 Project Workflow
+
+```
+Upload Two Text Files
+          │
+          ▼
+Read File Contents
+          │
+          ▼
+TF-IDF Vectorization
+          │
+          ▼
+Cosine Similarity
+          │
+          ▼
+Calculate Similarity
+          │
+          ▼
+Display Result
+```
+
+---
+
+## 📊 Sample Output
+
+| File 1 | File 2 | Similarity |
+|---------|---------|------------|
+| john.txt | juma.txt | 57.13% |
+| john.txt | fatma.txt | 16.22% |
+
+---
+
+## 💡 Future Enhancements
+
+- Support PDF and DOCX files
+- Highlight matching sentences
+- User Authentication
+- Upload multiple files
+- Download comparison reports
+- Store comparison history
+- Responsive Bootstrap UI
+
+---
+
+## 📷 Screenshots
+
+### Home Page
+<img width="1919" height="958" alt="image" src="https://github.com/user-attachments/assets/e4e17110-bfbe-4925-a057-e33224a4702a" />
+
+
+### Result Page
+
+<img width="1919" height="942" alt="image" src="https://github.com/user-attachments/assets/c806ec9a-d5ad-4d17-a23c-646d88761c62" />
+
+---
+
+## 👨‍💻 Author
+
+**Lokitha**
+
+- GitHub: https://github.com/Lokitha10
+- LinkedIn: https://www.linkedin.com/in/thathireddylokitha/
+
+---
+
+## 📄 License
+
+This project is developed for educational and learning purposes.
