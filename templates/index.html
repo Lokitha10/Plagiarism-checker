@@ -1,12 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plagiarism Checker</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-left: 5px solid orange;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #4facfe;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background: #4facfe;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+
+        .result {
+            margin-top: 25px;
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .result h2 {
+            color: #28a745;
+        }
+
+        .result h1 {
+            color: #155724;
+            margin-top: 10px;
+            font-size: 40px;
+        }
+    </style>
 
 </head>
 
@@ -14,44 +109,38 @@
 
 <div class="container">
 
-<h1>Plagiarism Detection System</h1>
+    <h1>📄 Plagiarism Detection System</h1>
 
-<form action="/compare" method="POST" enctype="multipart/form-data">
+    <p class="description">
+        Compare two text files and check their similarity.
+    </p>
 
-<label>Upload First File</label>
+    <div class="note">
+        <strong>Note:</strong> Only <strong>.txt</strong> files are supported.
+    </div>
 
-<input type="file" name="file1" required>
+    <form action="/compare" method="POST" enctype="multipart/form-data">
 
-<label>Upload Second File</label>
+        <label>Upload First File</label>
+        <input type="file" name="file1" accept=".txt" required>
 
-<input type="file" name="file2" required>
+        <label>Upload Second File</label>
+        <input type="file" name="file2" accept=".txt" required>
 
-<button type="submit">
+        <button type="submit">Compare Files</button>
 
-Compare
+    </form>
 
-</button>
+    {% if similarity %}
 
-</form>
+    <div class="result">
+        <h2>Similarity Score</h2>
+        <h1>{{ similarity }}%</h1>
+    </div>
 
-{% if similarity %}
-
-<h2>
-
-Similarity Score
-
-</h2>
-
-<h3>
-
-{{ similarity }} %
-
-</h3>
-
-{% endif %}
+    {% endif %}
 
 </div>
 
 </body>
-
 </html>
