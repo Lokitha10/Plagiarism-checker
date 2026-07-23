@@ -3,6 +3,11 @@
 A web-based **Plagiarism Detection System** built using **Python**, **Flask**, and **Scikit-learn**. The application allows users to upload two text files, compares their content using **TF-IDF Vectorization** and **Cosine Similarity**, and displays the similarity percentage.
 
 ---
+## 🌐 Live Demo
+
+🔗 **Hosted Application:** [https://your-app-name.onrender.com](https://plagiarism-checker-15wk.onrender.com)
+
+> **Note:** This application currently supports **.txt** files only.
 
 ## 🚀 Features
 
