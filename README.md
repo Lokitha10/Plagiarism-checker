@@ -5,7 +5,7 @@ A web-based **Plagiarism Detection System** built using **Python**, **Flask**, a
 ---
 ## 🌐 Live Demo
 
-🔗 **Hosted Application:** [https://your-app-name.onrender.com](https://plagiarism-checker-15wk.onrender.com)
+🔗 **Hosted Application:** (https://plagiarism-checker-15wk.onrender.com)
 
 > **Note:** This application currently supports **.txt** files only.
 
